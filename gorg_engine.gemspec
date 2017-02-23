@@ -14,9 +14,10 @@ Gem::Specification.new do |s|
   s.description = "Rails Engine for Gorg apps"
   s.license     = "MIT"
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
+  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 4.2.0"
+  s.add_dependency "rails", "~> 4.2.8"
   s.add_dependency "materialize-sass", "~> 0.98.0"
 
   # Use SCSS for stylesheets

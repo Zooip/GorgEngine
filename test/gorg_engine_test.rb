@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class GorgEngine::Test < ActiveSupport::TestCase
+class GorgEngineTest < ActiveSupport::TestCase
   test "truth" do
     assert_kind_of Module, GorgEngine
   end
