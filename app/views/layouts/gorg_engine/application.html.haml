@@ -1,0 +1,12 @@
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Gorg engine
+    = stylesheet_link_tag    "gorg_engine/application", media: "all"
+    = javascript_include_tag "gorg_engine/application"
+    = csrf_meta_tags
+    %link{:href => "https://fonts.googleapis.com/icon?family=Material+Icons", :rel => "stylesheet"}/
+  %body
+    %header
+      = render 'layouts/menu'
+    = yield
