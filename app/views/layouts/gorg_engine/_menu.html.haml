@@ -15,9 +15,9 @@
                 %label.label-icon{:for => "search"}
                   %i.material-icons search
       %li
-        =link_to "Emails", dashboard_path
+        =link_to "Emails", "#"
       %li
-        =link_to "Listes de diffusions", mailinglists_path
+        =link_to "Listes de diffusions", "#"
       - if user_signed_in?
         - if can? :read, :admin
           %li
@@ -28,20 +28,20 @@
                 %i.zmdi.zmdi-carret-down.material-icons.right
 
             %ul#dropdown1-admin_menu.dropdown-content
-              = render 'layouts/menu_admin'
-      = render 'layouts/user_widget'
+              = render :file => 'layouts/gorg_engine/_menu_admin.html.haml'
+      = render :file =>'layouts/gorg_engine/_user_widget.html.haml'
 
 
 
 
     %ul.side-nav#mobile-demo
-      = render 'layouts/user_widget_mobile'
+      = render :file => 'layouts/gorg_engine/_user_widget_mobile.html.haml'
 
       %li.divider
       %li
-        =link_to "Emails", dashboard_path
+        =link_to "Emails", "#"
       %li
-        =link_to "Listes de diffusions", mailinglists_path
+        =link_to "Listes de diffusions", "#"
 
 
       - if user_signed_in?
@@ -55,7 +55,7 @@
                     %i.material-icons search
                   =hidden_field_tag "id"
                   %i.material-icons close
-          = render 'layouts/menu_admin'
+          = render :file => 'layouts/gorg_engine/_menu_admin.html.haml'
 
 
 
