@@ -15,7 +15,7 @@
  */
 
 @import "materialize/components/color";
-@import "colors";
+@import_tree "colors";
 @import "materialize";
-@import "colors-fix";
-@import "materialize-fix";
+@import_tree "colors-fix";
+@import_tree "materialize-fix";

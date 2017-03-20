@@ -1,3 +1,12 @@
 = GorgEngine
 
 This project rocks and uses MIT-LICENSE.
+
+
+= How to use GorgEngine
+Add this line to use gorg_engine layout :
+```
+class ApplicationController < ActionController::Base
+  layout 'gorg_engine/application'
+end
+```
