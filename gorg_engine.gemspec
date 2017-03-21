@@ -46,6 +46,9 @@ Gem::Specification.new do |s|
   # Authorisations
   s.add_dependency 'cancancan'
 
+  #Slack chat
+  s.add_dependency 'gorg_slack_chat'
+
   s.add_dependency 'will_paginate', '~> 3.0.0'
 
 

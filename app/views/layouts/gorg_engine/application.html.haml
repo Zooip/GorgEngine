@@ -1,12 +1,32 @@
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Gorg engine
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    %title= Rails.application.secrets.app_name
+    = csrf_meta_tags
     = stylesheet_link_tag    "gorg_engine/application", media: "all"
     = javascript_include_tag "gorg_engine/application"
-    = csrf_meta_tags
     %link{:href => "https://fonts.googleapis.com/icon?family=Material+Icons", :rel => "stylesheet"}/
-  %body
+    -#TODO restore slack chat
+
+    -if slack_chat?
+      = tags_for_gorg_slack_chat
+
+
+  %body#body
     %header
       = render :file => 'layouts/gorg_engine/_menu.html.haml'
-    = yield
+    .wrapper
+      .mw1140p.container
+        %div
+          .pam.fr
+            %a.nav-button-open{"aria-label" => "open navigation", :href => "#body"}
+            %a.nav-button-close{"aria-label" => "close navigation", :href => "#"}
+
+        = yield
+    -#TODO restore slack chat
+    -if slack_chat?
+      =gorg_slack_chat( name: current_user&&current_user.fullname, id: current_user&&current_user.hruid.to_s, link: current_user&&"https://moncompte.gadz.org/admin/info_user?uuid=#{current_user.uuid}")
+
+  = render :file => 'layouts/gorg_engine/_ga.html.erb'
+
+
