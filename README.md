@@ -1,10 +1,10 @@
-= GorgEngine
+# GorgEngine
 
 This project rocks and uses MIT-LICENSE.
 
 
-= How to use GorgEngine
-== UI layout
+# How to use GorgEngine
+## UI layout
 Add this line to use gorg_engine layout :
 ```ruby
 class ApplicationController < ActionController::Base
@@ -12,14 +12,14 @@ class ApplicationController < ActionController::Base
 end
 ```
 
-== Authorisations
+## Authorisations
 Cancan is used for authorisation.
 You have to run :
 ```ruby
 rails g cancan:ability
 ```
 
-== Extend GorgEngine controllers
+## Extend GorgEngine controllers
 GorgEngine provide some base controller :
 * ApplicationController
 * UserController
@@ -40,5 +40,5 @@ class ApplicationController < ActionController::Base
 end
 ```
 
-= Todo
+# Todo
 * put migration template in initializer
