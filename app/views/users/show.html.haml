@@ -1,0 +1,50 @@
+%p#notice= notice
+.row
+  .col.l6
+    .card
+      .card-content
+        %span.card-title
+          .circle.big= "#{current_user.firstname.first.upcase}"
+          = @user.fullname
+        .box-bottom.pam
+          .grid-2
+            #info-perso
+              - %w(firstname lastname email).each do |attribute|
+                =display_attribute(@user, attribute)
+              -if can? :read, :admin
+                %b Est gadzart :
+                =@user.is_gadz ? "oui" : "non, pas d'accès à ce site"
+                %p
+                  %b uuid :
+                  =@user.uuid
+                = link_to 'Voir sur moncompte.gadz.org', "#{Configurable[:moncompte_url]}admin/info_user?uuid=#{@user.uuid}", target: "_blank"
+      .card-action
+        -if can? :update, @user
+          = link_to t('users.forms.buttons.edit'), edit_user_path(@user), class:"bwaves-effect waves-light btn btn-flat"
+        -if can? :masquerade, @user
+          = link_to t('users.forms.buttons.masquerade'), masquerade_path(@user), class:"waves-effect waves-light btn btn-flat"
+
+  .col.l6
+    .card.blue-grey.white-text
+      .card-content
+        %span.card-title
+          =t('users.forms.titles.infos_sync')
+        - %w(hruid last_gram_sync_at).each do |attribute|
+          =display_attribute(@user, attribute)
+        %p
+          %br
+          Il peut être necessaire de synchroniser un compte avec le GrAM pour récupérer son statut actuel si l'utilisateur ne s'est pas connecté depuis un certain temps.
+      .card-action
+        -if can?(:sync, @user) && @user.syncable?
+          -if @user.next_sync_allowed_at <= Time.now
+            = link_to t('users.forms.buttons.sync_now'), sync_user_path(@user), class:"waves-effect waves-light btn-flat white-text"
+          -else
+            .button.button-primary= t('users.forms.buttons.syncable_in_x', count:(@user.next_sync_allowed_at-Time.now).round)
+    -if can? :read, :admin
+      .card.blue-grey.white-text
+        .card-content
+          %span.card-title
+            = t('users.forms.titles.infos_tech')
+          - %w(role sign_in_count last_sign_in_at created_at updated_at).each do |attribute|
+            =display_attribute(@user, attribute)
+

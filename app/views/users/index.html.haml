@@ -1,0 +1,47 @@
+
+%h2 Utilisateurs
+.nav
+  .search-wrapper
+    =form_tag  users_path,:method => :get, :user_id => :id_element, id:'user_index_search' do
+      .input-field
+        =search_field_tag 'search', params['query'], {:placeholder => "Rechercher un utilisateur ...", name:"query", autofocus: true}
+        %label.label-icon{:for => "user_index_search"}
+          %i.material-icons search
+
+.card
+  .card-content
+    = link_to t('users.forms.buttons.new'), new_user_path,:class => "waves-effect waves-light btn"
+    %table.table-auto.box.collection
+      %thead
+        %tr
+          / %th Email
+          %th.hide-on-med-and-down= User.human_attribute_name('fullname')
+          %th= User.human_attribute_name('hruid')
+          %th
+
+
+      %tbody
+        - @users.each do |user|
+          %tr.collection-item
+            / %td= user.email
+            %td.hide-on-med-and-down= user.fullname+(user.role ? " - #{user.role.name}" : "")
+            %td= user.hruid
+            %td.hide-on-large-only
+              %a.dropdown-button.btn-small.btn-floating.btn-flat{"data-activates" => "dropdown-users#{user.id}", "data-constrainwidth"=>"false", "data-beloworigin"=>"true", "hover" => "false",  :href => "#"}
+                .zmdi.zmdi-more-vert
+            %td.hide-on-med-and-down
+              = link_to t('users.forms.buttons.show'), user
+
+            %div{id: "dropdown-users#{user.id}", class: "dropdown-content"}
+              %ul
+                %li
+                  %span
+                    %b=user.fullname
+                %li
+                  = link_to t('users.forms.buttons.show'), user
+                -if can? :update, user
+                  %li
+                    = link_to t('users.forms.buttons.edit'), edit_user_path(user)
+
+              / = link_to 'Destroy', user, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    =will_paginate(@users,renderer: MaterializeLinkRenderer, class: 'pagination center')
