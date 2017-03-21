@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170321151900) do
+ActiveRecord::Schema.define(version: 20170321181439) do
 
   create_table "configurables", force: :cascade do |t|
     t.string   "name"
@@ -46,12 +46,14 @@ ActiveRecord::Schema.define(version: 20170321151900) do
     t.string   "uuid"
     t.datetime "last_gram_sync_at"
     t.string   "hruid",                  default: "", null: false
+    t.integer  "role_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["hruid"], name: "index_users_on_hruid", unique: true
   add_index "users", ["is_gadz"], name: "index_users_on_is_gadz"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["role_id"], name: "index_users_on_role_id"
   add_index "users", ["uuid"], name: "index_users_on_uuid", unique: true
 
 end

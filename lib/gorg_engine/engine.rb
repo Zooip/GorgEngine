@@ -16,6 +16,8 @@ module GorgEngine
     require 'will_paginate/active_record'
     require 'awesome_print'
     require 'gorg_slack_chat'
+    require 'simple_form'
+    require 'virtus'
 
     config.generators do |g|
       g.template_engine :haml

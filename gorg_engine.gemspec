@@ -51,6 +51,10 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'will_paginate', '~> 3.0.0'
 
+  #form
+  s.add_dependency 'simple_form'
+
+  s.add_dependency 'virtus'
 
 
 
