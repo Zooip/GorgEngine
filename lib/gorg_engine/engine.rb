@@ -28,5 +28,14 @@ module GorgEngine
 
     # Load helpers to the app
     require GorgEngine::Engine.config.root + 'app' + 'helpers' + 'application_helper'
+
+    # config assets
+    initializer :assets do |config|
+      Rails.application.config.assets.paths << GorgEngine::Engine.root.join("app", "assets", "images", "gorg_engine")
+      Rails.application.config.assets.precompile += %w( gorg_engine/logo_alumni.jpg )
+    end
+
+
+
   end
 end
