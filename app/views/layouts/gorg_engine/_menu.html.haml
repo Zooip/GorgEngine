@@ -14,10 +14,12 @@
                 =search_field_tag 'Search', '',  name: 'query', :id_element => '#id', :placeholder => "prenom.nom.année",type: "search", id: "search"
                 %label.label-icon{:for => "search"}
                   %i.material-icons search
-      %li
-        =link_to "Emails", "#"
-      %li
-        =link_to "Listes de diffusions", "#"
+      -MenuItems.all.each do |menu|
+        -if menu.login_not_required || user_signed_in?
+          %li
+            - if can? menu.ability_action, menu.ability_object
+              =link_to menu.name, menu.link
+
       - if user_signed_in?
         - if can? :read, :admin
           %li
@@ -38,10 +40,11 @@
       = render :file => 'layouts/gorg_engine/_user_widget_mobile.html.haml'
 
       %li.divider
-      %li
-        =link_to "Emails", "#"
-      %li
-        =link_to "Listes de diffusions", "#"
+      -MenuItems.all.each do |menu|
+        -if menu.login_not_required || user_signed_in?
+          %li
+            - if can? menu.ability_action, menu.ability_object
+              =link_to menu.name, menu.link
 
 
       - if user_signed_in?

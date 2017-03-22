@@ -36,6 +36,9 @@ module GorgEngine
       Rails.application.config.assets.precompile += %w( gorg_engine/logo_alumni.jpg )
     end
 
+    require File.expand_path('config/extra_config.rb',GorgEngine::Engine.root)
+
+
 
 
   end

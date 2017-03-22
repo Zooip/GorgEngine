@@ -1,0 +1,21 @@
+ menu1:
+   name: title_du_menu1
+   ability_action: read
+   ability_object: admin
+   url: '#'
+   path: 'admin_configurable_path'
+   login_required: true
+
+
+ menu2:
+   name: title_du_menu2
+   ability_action: read
+   ability_object: user
+   url: 'http://google.fr'
+   login_required: false
+
+ menu3:
+   name: title_du_menu3nop
+   ability_action: read
+   ability_object: nope
+   login_required: false
