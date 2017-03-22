@@ -40,5 +40,9 @@ class ApplicationController < ActionController::Base
 end
 ```
 
+#Gram v2 API client
+You have to setup an [initializer](https://github.com/gadzorg/gram2_api_client_ruby#setup) to configure Gram API client
+
+
 # Todo
 * put migration template in initializer

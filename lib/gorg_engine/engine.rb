@@ -18,6 +18,7 @@ module GorgEngine
     require 'gorg_slack_chat'
     require 'simple_form'
     require 'virtus'
+    require 'gram_v2_client'
 
     config.generators do |g|
       g.template_engine :haml

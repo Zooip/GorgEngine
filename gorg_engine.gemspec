@@ -18,6 +18,10 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 4.2.8"
+
+  #############################################################
+  ## UI
+  #############################################################
   s.add_dependency "materialize-sass", "~> 0.98.0"
 
   # Use SCSS for stylesheets
@@ -33,10 +37,15 @@ Gem::Specification.new do |s|
   s.add_dependency "unobtrusive_flash", ">=3"
   s.add_dependency "haml-rails", "~> 0.9"
 
-  s.add_development_dependency "sqlite3"
-  s.add_development_dependency "better_errors"
-  s.add_development_dependency "binding_of_caller"
-  s.add_development_dependency "byebug"
+  #form
+  s.add_dependency 'simple_form'
+  s.add_dependency 'virtus'
+
+  s.add_dependency 'will_paginate', '~> 3.0.0'
+
+  #############################################################
+  ## back
+  #############################################################
 
   # Authentification
   s.add_dependency 'devise', '~> 4.1.1'
@@ -46,16 +55,23 @@ Gem::Specification.new do |s|
   # Authorisations
   s.add_dependency 'cancancan'
 
+
+  #############################################################
+  ## Gorg
+  #############################################################
+
   #Slack chat
   s.add_dependency 'gorg_slack_chat'
 
-  s.add_dependency 'will_paginate', '~> 3.0.0'
+  #Gram API Client
+  s.add_dependency 'gram_v2_client'
 
-  #form
-  s.add_dependency 'simple_form'
-
-  s.add_dependency 'virtus'
-
-
+  #############################################################
+  ## dev
+  #############################################################
+  s.add_development_dependency "sqlite3"
+  s.add_development_dependency "better_errors"
+  s.add_development_dependency "binding_of_caller"
+  s.add_development_dependency "byebug"
 
 end
