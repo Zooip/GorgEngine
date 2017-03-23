@@ -7,9 +7,9 @@ require "gorg_engine/version"
 Gem::Specification.new do |s|
   s.name        = "gorg_engine"
   s.version     = GorgEngine::VERSION
-  s.authors     = ["Alexandre Narbonne"]
-  s.email       = ["alexandre.narbonne@gadz.org"]
-  s.homepage    = "https://github.com/Zooip/GorgEngine"
+  s.authors     = ["Dorian Becker"]
+  s.email       = ["dorian.becker@gadz.org"]
+  s.homepage    = "https://github.com/gadzorg/GorgEngine"
   s.summary     = "Rails Engine for Gorg apps"
   s.description = "Rails Engine for Gorg apps"
   s.license     = "MIT"
