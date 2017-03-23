@@ -10,9 +10,7 @@ Devise.setup do |config|
   require "omniauth-cas"
 
   config.omniauth :cas, name: "GadzOrg",
-                  #todo restore host in secret.yml
-                  host:      "auth-rec.gadz.org",
-                  #host:      Rails.application.secrets.cas_provider_url,
+                  host:      Rails.application.secrets.cas_provider_url,
                   login_url: '/cas/login',
                   logout_url: '/cas/logout',
                   service_validate_url: '/cas/serviceValidate',

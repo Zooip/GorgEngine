@@ -21,7 +21,6 @@
             %a.nav-button-close{"aria-label" => "close navigation", :href => "#"}
 
         = yield
-    -#TODO restore slack chat
     -cache(current_user ? current_user.id.to_s + "_slack_chat" : "user_not_logged_slack_chat") do
       -if slack_chat?
         = tags_for_gorg_slack_chat

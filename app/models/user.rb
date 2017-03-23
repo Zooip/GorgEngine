@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
   attr_accessor :synced_with_gram
 
   # Associations
-  # todo add roles
   belongs_to :role
 
 
