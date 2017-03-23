@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170321181439) do
+ActiveRecord::Schema.define(version: 20170323152635) do
 
   create_table "configurables", force: :cascade do |t|
     t.string   "name"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20170321181439) do
     t.datetime "last_gram_sync_at"
     t.string   "hruid",                  default: "", null: false
     t.integer  "role_id"
+    t.string   "avatar_url"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

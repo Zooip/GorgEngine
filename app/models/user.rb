@@ -54,6 +54,7 @@ class User < ActiveRecord::Base
         self.last_gram_sync_at = Time.now
         self.hruid = gram_data.hruid
         self.is_gadz = gram_data.is_gadz
+        self.avatar_url = gram_data.avatar_url
         if self.save
           self.synced_with_gram = true
           return self

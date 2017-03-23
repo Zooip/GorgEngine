@@ -5,8 +5,7 @@
                                    "data-activates" => "dropdown_menu#{menu.name}",
                                    "data-beloworigin"=>"true",
                                    :href => "#!"}
-        %span
-          =menu.title
+        =menu.title
     %ul.dropdown-content{id: "dropdown_menu#{menu.name}"}
       -menu.items.each do |submenu|
         -if submenu.link

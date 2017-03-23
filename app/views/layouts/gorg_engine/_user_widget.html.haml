@@ -4,7 +4,7 @@
       %span
         = "#{current_user.firstname}"
         .circle
-          %img{:src => "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(current_user.email)}?d=404&s=50",onerror:"this.style.display='none'"}
+          %img{:src => "#{current_user.avatar_url}",onerror:"this.style.display='none'", height: "100%"}
             ="#{current_user.firstname.first.upcase}"
         %i.zmdi.zmdi-carret-down.material-icons.right
 

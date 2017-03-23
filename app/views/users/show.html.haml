@@ -1,10 +1,12 @@
 %p#notice= notice
 .row
-  .col.l6
+  .col.l6.s12
     .card
       .card-content
         %span.card-title
-          .circle.big= "#{current_user.firstname.first.upcase}"
+          .circle.big
+            %img{:src => "#{current_user.avatar_url}",onerror:"this.style.display='none'", height: "100%"}
+              = "#{current_user.firstname.first.upcase}"
           = @user.fullname
         .box-bottom.pam
           .grid-2
@@ -24,7 +26,7 @@
         -if can? :masquerade, @user
           = link_to t('users.forms.buttons.masquerade'), masquerade_path(@user), class:"waves-effect waves-light btn btn-flat"
 
-  .col.l6
+  .col.l6.s12
     .card.blue-grey.white-text
       .card-content
         %span.card-title
