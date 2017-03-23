@@ -1,6 +1,9 @@
 class MenuItems
   MENU_CONFIG = YAML.load_file(File.expand_path("config/menu.yml",Rails.root))
 
+  # menu items are cached, we clear this cache when booting the apps
+  Rails.cache.clear("menu_items_all")
+
   attr_accessor :id,
                 :name,
                 :icon,
@@ -13,10 +16,6 @@ class MenuItems
                 :login_required,
                 :dropdown,
                 :items
-  # def initialize(name, ability)
-  #   @name = name
-  #   @ability = ability
-  # end
 
   def initialize(h)
 
@@ -42,11 +41,13 @@ class MenuItems
 
 
   def self.all
-    all_items = []
-    MenuItems::MENU_CONFIG.values.each do |item|
-     all_items << MenuItems.new(item)
+    Rails.cache.fetch("menu_items_all") do
+      all_items = []
+      MenuItems::MENU_CONFIG.values.each do |item|
+       all_items << MenuItems.new(item)
+      end
+      all_items
     end
-    all_items
   end
 
   def login_not_required

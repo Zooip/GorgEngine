@@ -6,15 +6,13 @@
     = stylesheet_link_tag    "gorg_engine/application", media: "all"
     = javascript_include_tag "gorg_engine/application"
     %link{:href => "https://fonts.googleapis.com/icon?family=Material+Icons", :rel => "stylesheet"}/
-    -#TODO restore slack chat
 
-    -if slack_chat?
-      = tags_for_gorg_slack_chat
 
 
   %body#body
     %header
-      = render :file => 'layouts/gorg_engine/_menu.html.haml'
+      -cache (current_user ? current_user.id.to_s + "_menu" : "user_not_logged_menu") do
+        = render :file => 'layouts/gorg_engine/_menu.html.haml'
     .wrapper
       .mw1140p.container
         %div
@@ -24,8 +22,10 @@
 
         = yield
     -#TODO restore slack chat
-    -if slack_chat?
-      =gorg_slack_chat( name: current_user&&current_user.fullname, id: current_user&&current_user.hruid.to_s, link: current_user&&"https://moncompte.gadz.org/admin/info_user?uuid=#{current_user.uuid}")
+    -cache(current_user ? current_user.id.to_s + "_slack_chat" : "user_not_logged_slack_chat") do
+      -if slack_chat?
+        = tags_for_gorg_slack_chat
+        =gorg_slack_chat( name: current_user&&current_user.fullname, id: current_user&&current_user.hruid.to_s, link: current_user&&"https://moncompte.gadz.org/admin/info_user?uuid=#{current_user.uuid}")
 
   = render :file => 'layouts/gorg_engine/_ga.html.erb'
 
