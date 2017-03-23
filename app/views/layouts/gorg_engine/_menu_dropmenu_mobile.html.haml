@@ -1,0 +1,8 @@
+-if menu.login_not_required || user_signed_in?
+  -menu.items.each do |submenu|
+    -if submenu.link
+      = render :file => 'layouts/gorg_engine/_menu_item.html.haml', locals:{menu: submenu}
+    -else
+      %li
+        %span
+          %b=submenu.name

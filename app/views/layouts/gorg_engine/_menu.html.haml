@@ -15,22 +15,11 @@
                 %label.label-icon{:for => "search"}
                   %i.material-icons search
       -MenuItems.all.each do |menu|
-        -if menu.login_not_required || user_signed_in?
-          %li
-            - if can? menu.ability_action, menu.ability_object
-              =link_to menu.name, menu.link
+        -if menu.dropdown
+          = render :file => 'layouts/gorg_engine/_menu_dropmenu.html.haml', locals:{menu: menu}
+        -else
+          = render :file => 'layouts/gorg_engine/_menu_item.html.haml', locals:{menu: menu}
 
-      - if user_signed_in?
-        - if can? :read, :admin
-          %li
-            %a.dropdown-button{"data-constrainwidth"=>"false", "data-activates" => "dropdown1-admin_menu", "data-beloworigin"=>"true", :href => "#!"}
-              %span
-                Administration
-
-                %i.zmdi.zmdi-carret-down.material-icons.right
-
-            %ul#dropdown1-admin_menu.dropdown-content
-              = render :file => 'layouts/gorg_engine/_menu_admin.html.haml'
       = render :file =>'layouts/gorg_engine/_user_widget.html.haml'
 
 
@@ -38,15 +27,6 @@
 
     %ul.side-nav#mobile-demo
       = render :file => 'layouts/gorg_engine/_user_widget_mobile.html.haml'
-
-      %li.divider
-      -MenuItems.all.each do |menu|
-        -if menu.login_not_required || user_signed_in?
-          %li
-            - if can? menu.ability_action, menu.ability_object
-              =link_to menu.name, menu.link
-
-
       - if user_signed_in?
         - if can? :read, :admin
           %li.search-wrapper
@@ -58,7 +38,14 @@
                     %i.material-icons search
                   =hidden_field_tag "id"
                   %i.material-icons close
-          = render :file => 'layouts/gorg_engine/_menu_admin.html.haml'
+      %li.divider
+      -MenuItems.all.each do |menu|
+        -if menu.dropdown
+          = render :file => 'layouts/gorg_engine/_menu_dropmenu_mobile.html.haml', locals:{menu: menu}
+        -else
+          = render :file => 'layouts/gorg_engine/_menu_item.html.haml', locals:{menu: menu}
+
+
 
 
 

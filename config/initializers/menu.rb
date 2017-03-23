@@ -1,7 +1,8 @@
 class MenuItems
   MENU_CONFIG = YAML.load_file(File.expand_path("config/menu.yml",Rails.root))
 
-  attr_accessor :name,
+  attr_accessor :id,
+                :name,
                 :icon,
                 :ability_action,
                 :ability_object,
@@ -9,20 +10,34 @@ class MenuItems
                 :path,
                 :url,
                 :link,
-                :login_required
+                :login_required,
+                :dropdown,
+                :items
   # def initialize(name, ability)
   #   @name = name
   #   @ability = ability
   # end
 
   def initialize(h)
+
     h.each {|k,v| public_send("#{k}=",v)}
     self.ability_action = h["ability_action"].parameterize.underscore.to_sym
     self.ability_object = h["ability_object"].parameterize.underscore.to_sym
     self.login_required = h["login_required"]
 
+    # items is a Menu item collection
+    self.items = []
+    if h["items"]
+      h["items"].values.each do |item|
+        self.items << MenuItems.new(item)
+      end
+    end
+
     # set link to path unless url is present
     self.path ? self.link = eval('Rails.application.routes.url_helpers.'+self.path) : self.link = self.url
+
+    # set menu id
+    self.id = self.name.parameterize.underscore
   end
 
 

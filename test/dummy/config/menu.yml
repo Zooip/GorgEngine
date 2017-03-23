@@ -5,6 +5,7 @@
    url: '#'
    path: 'admin_configurable_path'
    login_required: true
+   dropdown: false
 
 
  menu2:
@@ -13,9 +14,39 @@
    ability_object: user
    url: 'http://google.fr'
    login_required: false
+   dropdown: false
 
- menu3:
-   name: title_du_menu3nop
+ admin-menu:
+   name: Administration
    ability_action: read
-   ability_object: nope
-   login_required: false
+   ability_object: admin
+   login_required: true
+   dropdown: true
+   items:
+     sub_menu_general_title:
+       name: Général
+       ability_action: read
+       ability_object: admin
+     sub_menu_config:
+       name: Configuration
+       ability_action: read
+       ability_object: admin
+       path: 'admin_configurable_path'
+       login_required: true
+       dropdown: false
+     sub_menu_users:
+       name: Utilisateurs
+       ability_action: read
+       ability_object: user
+       path: 'users_path'
+       login_required: true
+       dropdown: false
+     sub_menu_roles:
+       name: Roles
+       ability_action: read
+       ability_object: role
+       path: 'roles_path'
+       login_required: true
+       dropdown: false
+
+
