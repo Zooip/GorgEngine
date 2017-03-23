@@ -4,8 +4,8 @@ class MenuItems
   # menu items are cached, we clear this cache when booting the apps
   Rails.cache.clear("menu_items_all")
 
-  attr_accessor :id,
-                :name,
+  attr_accessor :name,
+                :title,
                 :icon,
                 :ability_action,
                 :ability_object,
@@ -27,7 +27,7 @@ class MenuItems
     # items is a Menu item collection
     self.items = []
     if h["items"]
-      h["items"].values.each do |item|
+      h["items"].each do |item|
         self.items << MenuItems.new(item)
       end
     end
@@ -36,14 +36,13 @@ class MenuItems
     self.path ? self.link = eval('Rails.application.routes.url_helpers.'+self.path) : self.link = self.url
 
     # set menu id
-    self.id = self.name.parameterize.underscore
   end
 
 
   def self.all
     Rails.cache.fetch("menu_items_all") do
       all_items = []
-      MenuItems::MENU_CONFIG.values.each do |item|
+      MenuItems::MENU_CONFIG.each do |item|
        all_items << MenuItems.new(item)
       end
       all_items

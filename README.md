@@ -50,11 +50,12 @@ Some link must be hidden according abilities. `ability_action` and `ability_obje
 
 You can use `url` or `path` for your menu link.
 
-The last item, `admin-menu`, generate the default admin menu.
+The last item, generate the default admin menu.
 ```yaml
 # config/menu.yml
- my_awesome_menu_title:
-   name: "My awesome menu title"
+ -
+   name: my_awesome_menu_title
+   title: My awesome menu title
    ability_action: read
    ability_object: user
    url: '#'
@@ -62,47 +63,52 @@ The last item, `admin-menu`, generate the default admin menu.
    login_required: true # hide this link for non-logged users
    dropdown: false # if this menu is a drop down menu
 
- google_menu:
-   name: "Google"
+ -
+   name: google
+   title: Google
    ability_action: read
    ability_object: user
    url: 'http://google.com'
    login_required: false
    dropdown: false
    
-  admin-menu:
-    name: Administration
+ -  # Drop down admin menu
+    name: administration
+    title: Administration
     ability_action: read
     ability_object: admin
     login_required: true
     dropdown: true
     items:
-      sub_menu_general_title:
-        name: Général
+      - # Title. if you dont set `url` or `path` a title is generated 
+        name: general
+        title: Général
         ability_action: read
         ability_object: admin
-      sub_menu_config:
-        name: Configuration
+      -
+        name: configuration
+        title: Configuration
         ability_action: read
         ability_object: admin
         path: 'admin_configurable_path'
         login_required: true
         dropdown: false
-      sub_menu_users:
-        name: Utilisateurs
+      -
+        name: utilisateurs
+        title: Utilisateurs
         ability_action: read
         ability_object: user
         path: 'users_path'
         login_required: true
         dropdown: false
-      sub_menu_roles:
-        name: Roles
+      -
+        name: roles
+        title: Roles
         ability_action: read
         ability_object: role
         path: 'roles_path'
         login_required: true
-        dropdown: false  
-
+        dropdown: false
 ```
 
 # Todo
