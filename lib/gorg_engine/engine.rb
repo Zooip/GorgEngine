@@ -34,6 +34,7 @@ module GorgEngine
     initializer :assets do |config|
       Rails.application.config.assets.paths << GorgEngine::Engine.root.join("app", "assets", "images", "gorg_engine")
       Rails.application.config.assets.precompile += %w( gorg_engine/logo_alumni.jpg )
+      Rails.application.config.assets.precompile += %w( gorg_engine/gorg.scss )
     end
 
     require File.expand_path('config/extra_config.rb',GorgEngine::Engine.root)
