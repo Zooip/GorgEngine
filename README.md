@@ -4,6 +4,11 @@ This project rocks and uses MIT-LICENSE.
 
 
 # How to use GorgEngine
+## Routes
+Add in your routes file :
+```ruby
+  mount GorgEngine::Engine => "gorg_engine"
+```
 ## UI layout
 Add this line to use gorg_engine layout :
 ```ruby
@@ -12,7 +17,7 @@ class ApplicationController < ActionController::Base
 end
 ```
 
-## Authorisations
+## Authorizations
 Cancan is used for authorisation.
 You have to run :
 ```ruby
@@ -111,5 +116,12 @@ The last item, generate the default admin menu.
         dropdown: false
 ```
 
-# Todo
-* put migration template in initializer
+## Database migration
+You have to generate a migration template AND to edit it BEFORE running migration. 
+```bash
+rails g gorg_engine:install
+```
+
+Edition : 
+You HAVE TO edit this `db/migrations/xxxxxxx_init_gorg_engine.rb` file to avoid conflict with your current migrations
+For each table and for each column : check if exist in your current project, and comment the line if needed.

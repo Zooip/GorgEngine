@@ -39,6 +39,8 @@ module GorgEngine
 
     require File.expand_path('config/extra_config.rb',GorgEngine::Engine.root)
 
+    require File.expand_path('lib/generators/gorg_engine_generator.rb',GorgEngine::Engine.root)
+
 
 
 
