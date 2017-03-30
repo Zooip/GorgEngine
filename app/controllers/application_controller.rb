@@ -16,6 +16,8 @@ class ApplicationController < ::ActionController::Base
   helper GorgEngine::Engine.helpers
   helper :all
 
+  rescue_from CanCan::AccessDenied, with: :access_denied
+
 
 
   def redirect_if_maintenance_mode
@@ -31,5 +33,24 @@ class ApplicationController < ::ActionController::Base
   def check_maintenance_mode
     # caching maintenance state
     Rails.cache.fetch("maintenance_mode", expires_in: 1.minute){ Configurable[:maintenance_mode] }
+  end
+
+  private
+  def access_denied(_exception)
+    respond_to do |format|
+      format.json { render nothing: true, status: :forbidden }
+      format.html {
+        store_location_for :user, request.fullpath
+        if user_signed_in?
+          render :file => "#{GorgEngine::Engine.root}/public/403.html", :status => 403
+        else
+          redirect_to new_user_session_path
+        end
+      }
+    end
+  end
+
+  def after_sign_out_path_for(_resource_or_scope)
+    Rails.application.secrets.cas_provider_url ? URI::HTTPS.build(host: Rails.application.secrets.cas_provider_host, path:"/cas/logout", query: "service=#{root_url}").to_s : root_url
   end
 end

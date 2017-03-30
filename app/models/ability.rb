@@ -29,26 +29,21 @@ class Ability
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
 
-    user ||= User.new # guest users (not logged in)
-    #if users.has_role? :admin
+    user ||= User.new # guest user (not logged in)
+    if user.has_role? :admin
       can :manage, :all
-     # can :manage, Role
-      #can :masquerade, User
-      #cannot :masquerade, User, :role_id => Role.where(name: ["admin","support"]).pluck(:id)
-    #elsif users.has_role? :support
-     # can :read, :admin
-      #can :manage, User
-      #can :masquerade, User
-      #TODO: uncomment when adding roles
-      #cannot [:update, :destroy, :create], User, :role_id => Role.where(name: ["admin"]).pluck(:id)
-      # cannot :masquerade, User, :role_id => Role.where(name: ["admin","support"]).pluck(:id)
-      # can :manage, Role
-      # cannot :manage, Role, :name => 'admin'
-      # can :read, Role
-    #end
-
-    if user.persisted?
-      #can [:read], User, :id => users.id if users.is_gadz_cached?
+      can :manage, Role
+      can :masquerade, User
+      cannot :masquerade, User, :role_id => Role.where(name: ["admin","support"]).pluck(:id)
+    elsif user.has_role? :support
+      can :read, :admin
+      can :manage, User
+      can :masquerade, User
+      cannot [:update, :delete, :create], User, :role_id => Role.where(name: ["admin"]).pluck(:id)
+      cannot :masquerade, User, :role_id => Role.where(name: ["admin","support"]).pluck(:id)
+      can :manage, Role
+      cannot :manage, Role, :name => 'admin'
+      can :read, Role
     end
 
   end
