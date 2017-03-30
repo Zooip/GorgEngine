@@ -3,6 +3,7 @@
     -if submenu.link
       = render :file => 'layouts/gorg_engine/_menu_item.html.haml', locals:{menu: submenu}
     -else
-      %li
-        %span
-          %b=submenu.title
+      - if can? submenu.ability_action, submenu.ability_object
+        %li
+          %span
+            %b=submenu.title
