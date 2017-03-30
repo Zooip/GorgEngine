@@ -66,6 +66,8 @@ Gem::Specification.new do |s|
   #Gram API Client
   s.add_dependency 'gram_v2_client'
 
+  s.add_dependency "mysql2"
+
   #############################################################
   ## dev
   #############################################################
