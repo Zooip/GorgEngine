@@ -1,9 +1,9 @@
 $:.push File.expand_path("../lib", __FILE__)
 
-# Maintain your gem's version:
+# Maintain your s.add_development_dependency " version"
 require "gorg_engine/version"
 
-# Describe your gem and declare its dependencies:
+# Describe your s.add_development_dependency "nd declare its dependencies"
 Gem::Specification.new do |s|
   s.name        = "gorg_engine"
   s.version     = GorgEngine::VERSION
@@ -66,6 +66,8 @@ Gem::Specification.new do |s|
   #Gram API Client
   s.add_dependency 'gram_v2_client'
 
+  s.add_dependency "mysql2"
+
   #############################################################
   ## dev
   #############################################################
@@ -74,5 +76,13 @@ Gem::Specification.new do |s|
   s.add_development_dependency "binding_of_caller"
   s.add_development_dependency "byebug"
   s.add_development_dependency "squasher"
+  s.add_development_dependency "rack-mini-profiler"
+
+  # tests
+  s.add_development_dependency "rspec-rails"
+  s.add_development_dependency "factory_girl_rails"
+  s.add_development_dependency "faker"
+  s.add_development_dependency "shoulda-matchers", "~> 3.0"
+  s.add_development_dependency "database_cleaner"
 
 end

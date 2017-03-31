@@ -18,6 +18,7 @@ class InitGorgEngine < ActiveRecord::Migration
     add_index "configurables", ["name"], name: "index_configurables_on_name"
 
     create_table "roles", force: :cascade do |t|
+      t.string "name"
       t.datetime "created_at", null: false
       t.datetime "updated_at", null: false
     end

@@ -1,4 +1,5 @@
 # GorgEngine
+[![Build Status](https://travis-ci.org/gadzorg/GorgEngine.svg?branch=master)](https://travis-ci.org/gadzorg/GorgEngine)
 
 This project rocks and uses MIT-LICENSE.
 
@@ -125,3 +126,23 @@ rails g gorg_engine:install
 Edition : 
 You HAVE TO edit this `db/migrations/xxxxxxx_init_gorg_engine.rb` file to avoid conflict with your current migrations
 For each table and for each column : check if exist in your current project, and comment the line if needed.
+
+
+## Customization
+### 403 Page
+Overload this method in your application controller and add your 403 page in `public/403.html`
+```ruby
+  def access_denied(_exception)
+    respond_to do |format|
+      format.json { render nothing: true, status: :forbidden }
+      format.html {
+        store_location_for :user, request.fullpath
+        if user_signed_in?
+          render :file => "#{Rails::Engine.root}/public/403.html", :status => 403
+        else
+          redirect_to new_user_session_path
+        end
+      }
+    end
+  end
+```
