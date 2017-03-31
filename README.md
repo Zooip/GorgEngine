@@ -1,4 +1,5 @@
 # GorgEngine
+[![Build Status](https://travis-ci.org/gadzorg/GorgEngine.svg?branch=master)](https://travis-ci.org/gadzorg/GorgEngine)
 
 This project rocks and uses MIT-LICENSE.
 
