@@ -18,3 +18,8 @@ gem 'configurable_engine', github: 'Blaked84/configurable_engine'
 gem "omniauth-cas", :git => "https://github.com/gadzorg/omniauth-cas.git", :branch => 'saml'
 
 gem "awesome_print", require:"ap"
+
+group :test, :development do
+  gem "simplecov"
+  gem "codeclimate-test-reporter", "~> 1.0.0"
+end

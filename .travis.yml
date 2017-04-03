@@ -4,6 +4,9 @@ cache:
   bundler: true
   directories:
     - test/dummy/tmp/cache
+addons:
+   code_climate:
+       repo_token: b4daa73855b07de9a4a6e18f0526ba9fdc39604543a6389f18c740237978521c
 rvm:
   - 2.2.6
 before_install: gem install bundler -v 1.14.5
