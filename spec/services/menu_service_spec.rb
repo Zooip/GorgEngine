@@ -1,11 +1,13 @@
 require 'rails_helper'
+require 'securerandom'
 
 
 RSpec.describe MenuItems, type: :service do
-  Rails.cache.clear("menu_items_all") #if File.exist?('tmp/cache')
+  #Rails.cache.clear("menu_items_all") #if File.exist?('tmp/cache')
+  MENU_UUID = SecureRandom.uuid
   MENU_CONFIG_TEST =  [
       {
-        "name" => "title_du_menu1_test",
+        "name" => "title_du_menu1_test#{MENU_UUID}",
         "title" => "Titre du menu1 test",
         "ability_action" => "read",
         "ability_object" => "admin",
@@ -54,8 +56,13 @@ RSpec.describe MenuItems, type: :service do
     end
 
     it "load names" do
-      expect(@all_items.first.name).to eq("title_du_menu1_test")
+      expect(@all_items[1].name).to eq("title_du_menu2_test")
     end
+
+    it "clean cache" do
+      expect(@all_items.first.name).to eq("title_du_menu1_test#{MENU_UUID}")
+    end
+
     it "load title" do
       expect(@all_items.first.title).to eq("Titre du menu1 test")
     end
