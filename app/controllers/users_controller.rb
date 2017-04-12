@@ -1,5 +1,5 @@
 class UsersController < ::ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :sync_with_gram, :dashboard, :dashboard_ml, :create_google_apps  ]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :sync_with_gram]
   #autocomplete :users, :hruid , :full => true, :display_value =>:hruid, extra_data: [:id, :firstname ] #, :scopes => [:search_by_name]
 
 

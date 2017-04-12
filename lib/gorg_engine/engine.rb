@@ -43,6 +43,7 @@ module GorgEngine
 
     require File.expand_path('lib/generators/gorg_engine_generator.rb',GorgEngine::Engine.root)
 
+    require File.expand_path('app/services/menu_service.rb',GorgEngine::Engine.root)
 
   end
 end
