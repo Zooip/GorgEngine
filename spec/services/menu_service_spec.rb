@@ -47,9 +47,6 @@ RSpec.describe MenuItems, type: :service do
       }
   ]
 
-   # require "byebug"
-   # byebug
-
   describe "return menu object" do
     before :each do
       @all_items = MenuItems.all(MENU_CONFIG_TEST)
@@ -70,6 +67,10 @@ RSpec.describe MenuItems, type: :service do
     it "load abilities" do
       expect(@all_items.first.ability_action).to eq(:read)
       expect(@all_items.first.ability_object).to eq(:admin)
+    end
+
+    it "have visibility propertie" do
+      expect(@all_items.first.login_required).to be true
     end
 
     it "load sub menu" do
