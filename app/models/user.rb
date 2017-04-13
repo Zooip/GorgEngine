@@ -2,8 +2,11 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
-         :rememberable, :trackable, :masqueradable,
-         :omniauthable, :omniauth_providers => [:GadzOrg]
+         :rememberable,
+         :trackable,
+         :masqueradable,
+         :omniauthable,
+         :omniauth_providers => [:GadzOrg]
 
   ##
   # synced_with_gram : True if last sync with gram data succeed (false if not).

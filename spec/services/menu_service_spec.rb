@@ -73,6 +73,9 @@ RSpec.describe MenuItems, type: :service do
       expect(@all_items.first.login_required).to be true
     end
 
+    it { expect(@all_items[2].items).to be_kind_of(Array) }
+    it { expect(@all_items[2].items.first).to be_kind_of(MenuItems) }
+
     it "load sub menu" do
       expect(@all_items[2].items.first.name).to eq("title_du_drop_menu1_test")
     end

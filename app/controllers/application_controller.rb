@@ -21,8 +21,13 @@ class ApplicationController < ::ActionController::Base
 
 
   def redirect_if_maintenance_mode
-    if check_maintenance_mode && controller_name != 'devise/sessions' && controller_name != 'static_page' && !current_user.nil?
-      unless current_user.has_role?(:admin)  || current_user.has_role?(:support) || Configurable[:allowed_uuid_in_maintenance_mode].split.include?(current_user.uuid)
+    if check_maintenance_mode &&
+        controller_name != 'devise/sessions' &&
+        controller_name != 'static_page' &&
+        !current_user.nil?
+      unless current_user.has_role?(:admin)  ||
+          current_user.has_role?(:support) ||
+          Configurable[:allowed_uuid_in_maintenance_mode].split.include?(current_user.uuid)
         cookies.delete(:secureusertokens)
         reset_session
         redirect_to root_path
