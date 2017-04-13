@@ -1,4 +1,4 @@
--if menu.login_not_required || user_signed_in?
+-if menu.login_not_required? || user_signed_in?
   %li
     - if can? menu.ability_action, menu.ability_object
       =link_to menu.title, menu.link
