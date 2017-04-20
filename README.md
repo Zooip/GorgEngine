@@ -138,7 +138,7 @@ Overload this method in your application controller and add your 403 page in `pu
       format.html {
         store_location_for :user, request.fullpath
         if user_signed_in?
-          render :file => "#{Rails::Engine.root}/public/403.html", :status => 403
+          render :file => "#{Rails.root}/public/403.html", :status => 403
         else
           redirect_to new_user_session_path
         end
