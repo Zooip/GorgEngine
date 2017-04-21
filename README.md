@@ -1,5 +1,7 @@
 # GorgEngine
 [![Build Status](https://travis-ci.org/gadzorg/GorgEngine.svg?branch=master)](https://travis-ci.org/gadzorg/GorgEngine)
+[![Gem Version](https://badge.fury.io/rb/gorg_engine.svg)](https://badge.fury.io/rb/gorg_engine)
+[![Gem Version](https://codeclimate.com/github/gadzorg/GorgEngine.png)](https://codeclimate.com/github/gadzorg/GorgEngine)
 
 This project rocks and uses MIT-LICENSE.
 
