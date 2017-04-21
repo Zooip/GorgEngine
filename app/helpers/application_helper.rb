@@ -8,4 +8,8 @@ module ApplicationHelper
     Rails.application.secrets.google_analytics_id
   end
 
+  def hotjar_id
+    Rails.application.secrets.hotjar_id
+  end
+
 end
