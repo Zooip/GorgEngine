@@ -19,6 +19,9 @@ gem "omniauth-cas", :git => "https://github.com/gadzorg/omniauth-cas.git", :bran
 
 gem "awesome_print", require:"ap"
 
+gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
+
+
 group :test, :development do
   gem "simplecov"
   gem "codeclimate-test-reporter", "~> 1.0.0"
