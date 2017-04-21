@@ -6,6 +6,12 @@ GIT
       rails (> 3.1.0)
 
 GIT
+  remote: git://github.com/alexpeattie/heroku_secrets.git
+  revision: 717af8e0acf399bc88d2c8c1a7e230023942af0f
+  specs:
+    heroku_secrets (0.0.2)
+
+GIT
   remote: git://github.com/patricklindsay/simple_form-materialize.git
   revision: 6d2afdec6f0523946fb2221070f05b79739be12a
   specs:
@@ -305,6 +311,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   gorg_engine!
+  heroku_secrets!
   omniauth-cas!
   rack-mini-profiler
   rspec-rails
