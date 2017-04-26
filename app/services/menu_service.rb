@@ -1,7 +1,7 @@
 class MenuItems
   # menu items are cached, we clear this cache when booting the apps
 
-  attr_accessor :name,
+      attr_accessor :name,
                 :title,
                 :icon,
                 :ability_action,
@@ -44,6 +44,10 @@ class MenuItems
 
   def login_not_required?
     !self.login_required
+  end
+
+  def self.logo_path
+    defined?(APP_LOGO_PATH) ? APP_LOGO_PATH : "gorg_engine/logo_alumni.jpg"
   end
 
 end

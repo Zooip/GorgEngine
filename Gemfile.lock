@@ -31,7 +31,7 @@ GIT
 PATH
   remote: .
   specs:
-    gorg_engine (1.2.0)
+    gorg_engine (1.2.2)
       cancancan
       devise (~> 4.1.1)
       devise_masquerade
