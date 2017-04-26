@@ -51,7 +51,15 @@ end
 #Gram v2 API client
 You have to setup an [initializer](https://github.com/gadzorg/gram2_api_client_ruby#setup) to configure Gram API client
 
-#Menu
+#Navbar
+##Logo
+You can customize you app logo. Create `config/initializers/menu.rb` and add :
+```ruby
+# config/initializers/menu.rb
+APP_LOGO_PATH = "insert url here"
+```
+You can use asset path like `asset_subfolder/logo.png` or external url.
+##Menu
 You have to configure you app menu.
 
 Some link must be hidden according abilities. `ability_action` and `ability_object` are used for Cancancan. In the example bellow, il generate the following condition `can ? :read, :user`. 
