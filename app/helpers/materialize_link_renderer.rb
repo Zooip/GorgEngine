@@ -18,7 +18,9 @@ class MaterializeLinkRenderer < WillPaginate::ViewHelpers::LinkRenderer
     url_params = @base_url_params.dup
     add_current_page_param(url_params,  target)
 
-    @template.url_for(url_params)
+
+    #@template.url_for(url_params)
+    Rails.application.routes.url_helpers.url_for(url_params)
   end
 
   def html_container(html)
