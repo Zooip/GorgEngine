@@ -15,3 +15,14 @@ gemspec
 gem 'simple_form-materialize', github: 'patricklindsay/simple_form-materialize'
 gem 'configurable_engine', github: 'Blaked84/configurable_engine'
 
+gem "omniauth-cas", :git => "https://github.com/gadzorg/omniauth-cas.git", :branch => 'saml'
+
+gem "awesome_print", require:"ap"
+
+gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
+
+
+group :test, :development do
+  gem "simplecov"
+  gem "codeclimate-test-reporter", "~> 1.0.0"
+end

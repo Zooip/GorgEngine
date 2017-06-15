@@ -1,0 +1,16 @@
+-if menu.login_not_required? || user_signed_in?
+  %li
+    - if can? menu.ability_action, menu.ability_object
+      %a.dropdown-button{"data-constrainwidth"=>"false",
+                                   "data-activates" => "dropdown_menu#{menu.name}",
+                                   "data-beloworigin"=>"true",
+                                   :href => "#!"}
+        =menu.title
+    %ul.dropdown-content{id: "dropdown_menu#{menu.name}"}
+      -menu.items.each do |submenu|
+        -if submenu.link
+          = render :file => 'layouts/gorg_engine/_menu_item.html.haml', locals:{menu: submenu}
+        -else
+          %li
+            %span
+              %b=submenu.title

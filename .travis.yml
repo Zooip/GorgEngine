@@ -1,0 +1,22 @@
+language: ruby
+
+cache:
+  bundler: true
+  directories:
+    - test/dummy/tmp/cache
+addons:
+   code_climate:
+       repo_token: b4daa73855b07de9a4a6e18f0526ba9fdc39604543a6389f18c740237978521c
+rvm:
+  - 2.2.6
+before_install: gem install bundler -v 1.14.5
+install: bundle install --jobs=3 --retry=3 --deployment #--without development
+services:
+  - mysql
+before_script:
+  - mysql -e 'create database myapp_test;'
+  - cp test/dummy/config/database.travis.yml test/dummy/config/database.yml
+  - cp test/dummy/config/secrets.travis.yml test/dummy/config/secrets.yml
+script:  
+  - RAILS_ENV=test bundle exec rake app:db:migrate
+  - RAILS_ENV=test bundle exec rspec spec/

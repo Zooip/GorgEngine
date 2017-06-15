@@ -1,7 +1,8 @@
 %nav
   .nav-wrapper
     =link_to root_path class: "brand-logo" do
-      =image_tag "logo_alumni.png", id: "logo"
+      =image_tag MenuItems.logo_path, id: "logo", height: "100%"
+
     %a.button-collapse{"data-activates" => "mobile-demo", :href => "#"}
       %i.material-icons menu
 
@@ -14,36 +15,19 @@
                 =search_field_tag 'Search', '',  name: 'query', :id_element => '#id', :placeholder => "prenom.nom.année",type: "search", id: "search"
                 %label.label-icon{:for => "search"}
                   %i.material-icons search
-      %li
-        =link_to "Emails", dashboard_path
-      %li
-        =link_to "Listes de diffusions", mailinglists_path
-      - if user_signed_in?
-        - if can? :read, :admin
-          %li
-            %a.dropdown-button{"data-constrainwidth"=>"false", "data-activates" => "dropdown1-admin_menu", "data-beloworigin"=>"true", :href => "#!"}
-              %span
-                Administration
+      -MenuItems.all.each do |menu|
+        -if menu.dropdown
+          = render :file => 'layouts/gorg_engine/_menu_dropmenu.html.haml', locals:{menu: menu}
+        -else
+          = render :file => 'layouts/gorg_engine/_menu_item.html.haml', locals:{menu: menu}
 
-                %i.zmdi.zmdi-carret-down.material-icons.right
-
-            %ul#dropdown1-admin_menu.dropdown-content
-              = render 'layouts/menu_admin'
-      = render 'layouts/user_widget'
+      = render :file =>'layouts/gorg_engine/_user_widget.html.haml'
 
 
 
 
     %ul.side-nav#mobile-demo
-      = render 'layouts/user_widget_mobile'
-
-      %li.divider
-      %li
-        =link_to "Emails", dashboard_path
-      %li
-        =link_to "Listes de diffusions", mailinglists_path
-
-
+      = render :file => 'layouts/gorg_engine/_user_widget_mobile.html.haml'
       - if user_signed_in?
         - if can? :read, :admin
           %li.search-wrapper
@@ -55,7 +39,14 @@
                     %i.material-icons search
                   =hidden_field_tag "id"
                   %i.material-icons close
-          = render 'layouts/menu_admin'
+      %li.divider
+      -MenuItems.all.each do |menu|
+        -if menu.dropdown
+          = render :file => 'layouts/gorg_engine/_menu_dropmenu_mobile.html.haml', locals:{menu: menu}
+        -else
+          = render :file => 'layouts/gorg_engine/_menu_item.html.haml', locals:{menu: menu}
+
+
 
 
 

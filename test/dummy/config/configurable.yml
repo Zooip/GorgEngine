@@ -1,0 +1,37 @@
+site_url:
+  name: Site Url (avec un "/" à la fin)
+  default: http://localhost:3000/
+  type: string
+
+use_helpdesk_chat:
+  name: Activer la messagerie instantannée de support
+  default: true
+  type: boolean
+
+anonymous_helpdesk_chat:
+  name: Activer la messagerie instantannée de support même si l'utilisateur n'est pas connecté
+  default: true
+  type: boolean
+  
+legacy_auth_enabled:
+  name: "Afficher la page d'authentification interne aux utilisateur"
+  default: true
+  type: boolean
+
+maintenance_mode:
+  name: Mode maintenance
+  default: false
+  type: boolean
+
+allowed_uuid_in_maintenance_mode:
+  name: UUID autorisés à se connecter en mode maintenance ( séparés par un espace )
+  type: string
+
+
+maintenance_message:
+  name: Message maintenance
+  default: Le site n'est pas encore ouvert, reviens à partir du 8 octobre :-)
+
+moncompte_url:
+  name: URL de moncompte.gadz.org ( avec un "/" à la fin )
+  default: https://moncompte.gadz.org/
