@@ -31,7 +31,7 @@
               %a.dropdown-button.btn-small{"data-activates" => "dropdown-users#{user.id}", "data-constrainwidth"=>"false", "data-beloworigin"=>"true", "hover" => "false",  :href => "#"}
                 %i.material-icons more_vert
             %td.hide-on-med-and-down
-              = link_to t('users.forms.buttons.show'), user
+              = link_to t('users.forms.buttons.show'), user_path(user)
 
             %div{id: "dropdown-users#{user.id}", class: "dropdown-content"}
               %ul
@@ -39,7 +39,7 @@
                   %span
                     %b=user.fullname
                 %li
-                  = link_to t('users.forms.buttons.show'), user
+                  = link_to t('users.forms.buttons.show'), user_path(user)
                 -if can? :update, user
                   %li
                     = link_to t('users.forms.buttons.edit'), edit_user_path(user)
