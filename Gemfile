@@ -24,5 +24,5 @@ gem 'heroku_secrets', :git => "https://github.com/gadzorg/heroku_secrets.git"
 
 group :test, :development do
   gem "simplecov"
-  gem "codeclimate-test-reporter", "~> 1.0.0"
+  gem "codeclimate-test-reporter", ">= 1.0.0"
 end
