@@ -21,6 +21,7 @@ gem "awesome_print", require:"ap"
 
 gem 'heroku_secrets', :git => "https://github.com/gadzorg/heroku_secrets.git"
 
+gem "gram_v2_client", :git => "https://github.com/gadzorg/gram2_api_client_ruby.git"
 
 group :test, :development do
   gem "simplecov"

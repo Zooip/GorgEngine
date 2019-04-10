@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", ">= 4.2.11"
+  s.add_dependency "rails", ">= 5.2.3"
 
   #############################################################
   ## UI
@@ -25,17 +25,17 @@ Gem::Specification.new do |s|
   s.add_dependency "materialize-sass", ">= 0.98.0"
 
   # Use SCSS for stylesheets
-  s.add_dependency "sass-rails", ">= 5.0"
+  s.add_dependency "sass-rails"
 
   # Use Uglifier as compressor for JavaScript assets
-  s.add_dependency "uglifier", ">= 1.3.0"
+  s.add_dependency "uglifier"
 
   # Use jquery as the JavaScript library
   s.add_dependency "jquery-rails"
   s.add_dependency "jquery-ui-rails"
 
-  s.add_dependency "unobtrusive_flash", ">=3"
-  s.add_dependency "haml-rails", ">= 0.9"
+  s.add_dependency "unobtrusive_flash"
+  s.add_dependency "haml-rails"
 
   #form
   s.add_dependency 'simple_form'
@@ -48,7 +48,7 @@ Gem::Specification.new do |s|
   #############################################################
 
   # Authentification
-  s.add_dependency 'devise', '>= 4.1.1'
+  s.add_dependency 'devise'
   s.add_dependency 'omniauth'
   s.add_dependency 'devise_masquerade'
 
@@ -64,7 +64,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'gorg_slack_chat'
 
   #Gram API Client
-  s.add_dependency 'gram_v2_client'
+#  s.add_dependency 'gram_v2_client'
 
   s.add_dependency "mysql2"
 
@@ -82,7 +82,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "factory_girl_rails"
   s.add_development_dependency "faker"
-  s.add_development_dependency "shoulda-matchers", ">= 3.0"
+  s.add_development_dependency "shoulda-matchers"
   s.add_development_dependency "database_cleaner"
 
 end
