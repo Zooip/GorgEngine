@@ -1,22 +1,15 @@
 GIT
-  remote: git://github.com/Blaked84/configurable_engine.git
-  revision: 42bb4203e0f6426f930c82149d91f5872ddf4f64
+  remote: https://github.com/gadzorg/configurable_engine.git
+  revision: 9a57d216d59af3a76b95e947dec83487eadf7a02
   specs:
     configurable_engine (0.4.9.1)
       rails (> 3.1.0)
 
 GIT
-  remote: git://github.com/alexpeattie/heroku_secrets.git
-  revision: 717af8e0acf399bc88d2c8c1a7e230023942af0f
+  remote: https://github.com/gadzorg/heroku_secrets.git
+  revision: 92d8abcbb1d754473cca2e44fa4bdd286f6910a9
   specs:
     heroku_secrets (0.0.2)
-
-GIT
-  remote: git://github.com/patricklindsay/simple_form-materialize.git
-  revision: 6d2afdec6f0523946fb2221070f05b79739be12a
-  specs:
-    simple_form-materialize (0.0.1)
-      rails (~> 4.2)
 
 GIT
   remote: https://github.com/gadzorg/omniauth-cas.git
@@ -27,6 +20,13 @@ GIT
       addressable (~> 2.3)
       nokogiri (~> 1.5)
       omniauth (~> 1.1.0)
+
+GIT
+  remote: https://github.com/gadzorg/simple_form-materialize.git
+  revision: ad50b0ac0cc28f82bff51e321ce690586554ed42
+  specs:
+    simple_form-materialize (0.0.1)
+      rails (>= 4.2)
 
 PATH
   remote: .

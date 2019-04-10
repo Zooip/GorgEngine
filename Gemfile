@@ -12,14 +12,14 @@ gemspec
 
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
-gem 'simple_form-materialize', github: 'patricklindsay/simple_form-materialize'
-gem 'configurable_engine', github: 'Blaked84/configurable_engine'
+gem 'simple_form-materialize', :git => "https://github.com/gadzorg/simple_form-materialize.git"
+gem 'configurable_engine', :git => "https://github.com/gadzorg/configurable_engine.git"
 
 gem "omniauth-cas", :git => "https://github.com/gadzorg/omniauth-cas.git", :branch => 'saml'
 
 gem "awesome_print", require:"ap"
 
-gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
+gem 'heroku_secrets', :git => "https://github.com/gadzorg/heroku_secrets.git"
 
 
 group :test, :development do
