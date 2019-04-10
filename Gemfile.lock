@@ -43,7 +43,7 @@ PATH
       materialize-sass (>= 0.98.0)
       mysql2
       omniauth
-      rails (>= 4.2.8)
+      rails (>= 4.2.11)
       sass-rails (>= 5.0)
       simple_form
       uglifier (>= 1.3.0)
