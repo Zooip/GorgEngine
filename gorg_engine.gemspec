@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
   s.add_dependency "jquery-ui-rails"
 
   s.add_dependency "unobtrusive_flash"
-  s.add_dependency "haml-rails"
+  s.add_dependency "haml-rails", "~> 1.0"
 
   #form
   s.add_dependency 'simple_form'
