@@ -26,4 +26,5 @@ gem "gram_v2_client", :git => "https://github.com/gadzorg/gram2_api_client_ruby.
 group :test, :development do
   gem "simplecov"
   gem "codeclimate-test-reporter", ">= 1.0.0"
+  gem 'rails-controller-testing'
 end
