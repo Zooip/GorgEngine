@@ -1,4 +1,4 @@
-class InitGorgEngine < ActiveRecord::Migration
+class InitGorgEngine < ActiveRecord::Migration[4.2]
   def change
 
 

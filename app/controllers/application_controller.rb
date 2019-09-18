@@ -8,7 +8,7 @@ class ApplicationController < ::ActionController::Base
   layout 'gorg_engine/application'
 
   # Add maintenance mode redirection
-  before_filter :redirect_if_maintenance_mode
+  before_action :redirect_if_maintenance_mode
 
   before_action :masquerade_user!
 
