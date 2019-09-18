@@ -24,27 +24,26 @@
 
 require 'faker'
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :user do
     email { Faker::Internet.email }
     firstname { Faker::Name.first_name }
     lastname { Faker::Name.last_name }
     hruid { firstname.downcase.gsub(/[^a-z]/, '-')+'.'+lastname.downcase.gsub(/[^a-z]/, '-')+"."+["1950","2015","ext","soce","associe"].sample+["",".2",".3"].sample}
-    password Devise.friendly_token[0,20]
-    password_confirmation {password}
-    uuid {SecureRandom.uuid}
+    password { Devise.friendly_token[0,20] }
+    password_confirmation { password }
+    uuid { SecureRandom.uuid }
 
-	  factory :admin do   
-	    	role {FactoryGirl.create(:role, name:"admin")}
+	  factory :admin do
+	    role { create(:role, name:"admin") }
     end
 
     factory :support do
-      role {FactoryGirl.create(:role, name:"support")}
+      role { create(:role, name:"support") }
     end
 
     factory :invalid_user do
-      email nil
+      email { nil }
     end
-
   end
 end

@@ -14,7 +14,7 @@ include Devise::TestHelpers
     context "user login as basic user" do
 
       before :each do
-        @c_user||=FactoryGirl.create(:user, firstname: 'Ulysse', email:'Ulysse@hotmail.com')
+        @c_user||=FactoryBot.create(:user, firstname: 'Ulysse', email:'Ulysse@hotmail.com')
         login @c_user
         get destination, params
       end
@@ -35,9 +35,9 @@ include Devise::TestHelpers
   describe "GET #index" do
 
     before :each do
-      @alice = FactoryGirl.create(:user, firstname: 'Alice', email:'alice@hotmail.com')
-      @bob = FactoryGirl.create(:user, firstname: 'Bob', email:'bob@hotmail.com')
-      @charlie = FactoryGirl.create(:user, firstname: 'Charlie', email:'charlie@hotmail.com')
+      @alice = FactoryBot.create(:user, firstname: 'Alice', email:'alice@hotmail.com')
+      @bob = FactoryBot.create(:user, firstname: 'Bob', email:'bob@hotmail.com')
+      @charlie = FactoryBot.create(:user, firstname: 'Charlie', email:'charlie@hotmail.com')
     end
 
     #it_should_behave_like "an admin only endpoint", :index
@@ -45,7 +45,7 @@ include Devise::TestHelpers
     context "user login as admin" do
 
       before :each do
-        @admin=FactoryGirl.create(:admin, firstname: 'Admin', email:'admin@hotmail.com')
+        @admin=FactoryBot.create(:admin, firstname: 'Admin', email:'admin@hotmail.com')
         login @admin
         get :index
       end
@@ -61,7 +61,7 @@ include Devise::TestHelpers
 
   describe "GET #show" do
     before :each do
-        @user=FactoryGirl.create(:user)
+        @user=FactoryBot.create(:user)
     end
 
     #it_should_behave_like "an admin only endpoint", :show  do
@@ -74,7 +74,7 @@ include Devise::TestHelpers
         let(:id) {@user.id}
 
         before :each do
-          @admin=FactoryGirl.create(:admin, firstname: 'Admin', email:'admin@hotmail.com')
+          @admin=FactoryBot.create(:admin, firstname: 'Admin', email:'admin@hotmail.com')
           login @admin
           get :show, :id => @user.hruid
         end
@@ -91,7 +91,7 @@ include Devise::TestHelpers
         let(:id) {@user.uuid}
 
         before :each do
-          @admin=FactoryGirl.create(:admin, firstname: 'Admin', email:'admin@hotmail.com')
+          @admin=FactoryBot.create(:admin, firstname: 'Admin', email:'admin@hotmail.com')
           login @admin
           get :show, :id => @user.hruid
         end
@@ -108,7 +108,7 @@ include Devise::TestHelpers
         let(:id) {@user.hruid}
 
         before :each do
-          @admin=FactoryGirl.create(:admin, firstname: 'Admin', email:'admin@hotmail.com')
+          @admin=FactoryBot.create(:admin, firstname: 'Admin', email:'admin@hotmail.com')
           login @admin
           get :show, :id => @user.hruid
         end
@@ -130,7 +130,7 @@ include Devise::TestHelpers
     context "user login as admin" do
 
       before :each do
-        @admin=FactoryGirl.create(:admin, firstname: 'Admin', email:'admin@hotmail.com')
+        @admin=FactoryBot.create(:admin, firstname: 'Admin', email:'admin@hotmail.com')
         login @admin
         get :new
       end
@@ -151,30 +151,30 @@ include Devise::TestHelpers
     context "user login as admin" do
 
       before :each do
-        @admin=FactoryGirl.create(:admin, firstname: 'Admin', email:'admin@hotmail.com')
+        @admin=FactoryBot.create(:admin, firstname: 'Admin', email:'admin@hotmail.com')
         login @admin
       end
 
       context 'With valid data' do
-        it { expect{post :create, user: FactoryGirl.attributes_for(:user)}.to change{User.count}.by(1) }
+        it { expect{post :create, user: FactoryBot.attributes_for(:user)}.to change{User.count}.by(1) }
         it "respond with 302" do
-          post :create, user: FactoryGirl.attributes_for(:user)
+          post :create, user: FactoryBot.attributes_for(:user)
           is_expected.to respond_with :redirect
        end
        it "Redirect to create user #show" do
-          post :create, user: FactoryGirl.attributes_for(:user)
+          post :create, user: FactoryBot.attributes_for(:user)
           is_expected.to redirect_to user_path(assigns(:user).id)
        end
       end
       # TODO review this test
       # context 'With invalid data' do
-      #   it {expect{post :create, user: FactoryGirl.attributes_for(:invalid_user)}.to_not change{User.count}}
+      #   it {expect{post :create, user: FactoryBot.attributes_for(:invalid_user)}.to_not change{User.count}}
       #   it "respond with 422" do
-      #     post :create, user: FactoryGirl.attributes_for(:invalid_user)
+      #     post :create, user: FactoryBot.attributes_for(:invalid_user)
       #     is_expected.to respond_with :unprocessable_entity
       #   end
       #   it "Redirect to create user #show" do
-      #     post :create, user: FactoryGirl.attributes_for(:invalid_user)
+      #     post :create, user: FactoryBot.attributes_for(:invalid_user)
       #     is_expected.to render_template :new
       #   end
       # end
@@ -183,7 +183,7 @@ include Devise::TestHelpers
 
   describe "GET #edit" do
     before :each do
-        @user=FactoryGirl.create(:user)
+        @user=FactoryBot.create(:user)
     end
 
     it_should_behave_like "an admin only endpoint", :edit do
@@ -193,7 +193,7 @@ include Devise::TestHelpers
     context "user login as admin" do
 
       before :each do
-        @admin=FactoryGirl.create(:admin, firstname: 'Admin', email:'admin@hotmail.com')
+        @admin=FactoryBot.create(:admin, firstname: 'Admin', email:'admin@hotmail.com')
         login @admin
         get :edit, :id => @user.id
       end
@@ -209,7 +209,7 @@ include Devise::TestHelpers
 
   describe "GET #update" do
     before :each do
-        @user=FactoryGirl.create(:user, firstname:'Bob',email:'bob@hotmail.com')
+        @user=FactoryBot.create(:user, firstname:'Bob',email:'bob@hotmail.com')
     end
 
     it_should_behave_like "an admin only endpoint", :update do
@@ -219,13 +219,13 @@ include Devise::TestHelpers
     context "user login as admin" do
 
       before :each do
-        @admin=FactoryGirl.create(:admin, firstname: 'Admin', hruid: 'admin.test.ext',email:'admin@hotmail.com')
+        @admin=FactoryBot.create(:admin, firstname: 'Admin', hruid: 'admin.test.ext',email:'admin@hotmail.com')
         login @admin
       end
 
       context 'With valid data' do
         before :each do
-          post :update, :id => @user.id, user: FactoryGirl.attributes_for(:user, firstname:'Bobby')
+          post :update, :id => @user.id, user: FactoryBot.attributes_for(:user, firstname:'Bobby')
         end
         it "update user data" do
           expect(User.find(@user.id).firstname).to eq('Bobby')
@@ -239,7 +239,7 @@ include Devise::TestHelpers
 
       context 'With invalid data' do
         before :each do
-          post :update, :id => @user.id, user: FactoryGirl.attributes_for(:user, firstname:'Bobby', hruid:'')
+          post :update, :id => @user.id, user: FactoryBot.attributes_for(:user, firstname:'Bobby', hruid:'')
         end
 
         it "doesn't update user data" do
@@ -248,11 +248,11 @@ include Devise::TestHelpers
         end
        # TODO review this test
        #  it "respond with 422" do
-       #    post :create, user: FactoryGirl.attributes_for(:invalid_user)
+       #    post :create, user: FactoryBot.attributes_for(:invalid_user)
        #    is_expected.to respond_with :unprocessable_entity
        # end
        # it "Redirect to create user #show" do
-       #    post :create, user: FactoryGirl.attributes_for(:invalid_user)
+       #    post :create, user: FactoryBot.attributes_for(:invalid_user)
        #    is_expected.to render_template :new
        #end
       end
@@ -261,7 +261,7 @@ include Devise::TestHelpers
 
   describe "GET #destroy" do
     before :each do
-        @user=FactoryGirl.create(:user)
+        @user=FactoryBot.create(:user)
     end
 
     it_should_behave_like "an admin only endpoint", :destroy do
@@ -271,7 +271,7 @@ include Devise::TestHelpers
     context "user login as admin" do
 
       before :each do
-        @admin=FactoryGirl.create(:admin, firstname: 'Admin', email:'admin@hotmail.com')
+        @admin=FactoryBot.create(:admin, firstname: 'Admin', email:'admin@hotmail.com')
         login @admin
       end
 
