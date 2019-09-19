@@ -14,7 +14,6 @@ module GorgEngine
     require 'cancancan'
     require 'will_paginate'
     require 'will_paginate/active_record'
-    require 'awesome_print'
     require 'gorg_slack_chat'
     require 'simple_form'
     require 'virtus'
