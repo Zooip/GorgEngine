@@ -14,7 +14,7 @@ class User < ApplicationRecord
   attr_accessor :synced_with_gram
 
   # Associations
-  belongs_to :role
+  belongs_to :role, optional: true
 
 
   after_initialize :set_default_values
