@@ -7,6 +7,20 @@ This project rocks and uses MIT-LICENSE.
 
 
 # How to use GorgEngine
+
+## Install
+For Rails >= 5.0, please use 2.x versions (currently only available on GitHub).
+
+```ruby
+gem "gorg_engine", git: "https://github.com/gadzorg/GorgEngine", ref: "v2.0.1"
+```
+
+For Rails 4.x, use 1.x version like usual
+
+```ruby
+gem "gorg_engine", "< 2"
+```
+
 ## Routes
 Add in your routes file :
 ```ruby
